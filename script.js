@@ -4,6 +4,7 @@
 const flights =
   "_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30";
 */
+
 // Data needed for first part of the section
 const restaurant = {
   name: "Classico Italiano",
@@ -41,8 +42,21 @@ const restaurant = {
       `Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} street at ${time}`
     );
   },
+
+  orderPasta: function (ingr1, ingr2, ingr3) {
+    console.log(
+      `Here is your delicious Pasta with the Ingerients ${ingr1}, ${ingr2} and ${ingr3}`
+    );
+  },
+
+  orderPizza: function (mainIngredient, ...otherIngeredient) {
+    console.log(mainIngredient);
+    console.log(otherIngeredient);
+  },
 };
 
+/*
+//////////////////////////
 // Array Destructing
 const arr = [2, 3, 4];
 const a = arr[0];
@@ -81,6 +95,9 @@ console.log(i, j, k);
 const [p = 1, q = 1, r = 1] = [8, 9];
 console.log(p, q, r);
 
+
+
+//////////////////////////
 // Objects Destructing
 const { name, openingHours, categories } = restaurant;
 console.log(name, openingHours, categories);
@@ -122,3 +139,120 @@ restaurant.orderDelivery({
   address: "10, Lagos",
   time: "3pm",
 });
+
+//////////////////////////
+//The Spread Operator
+const arr = [7, 8, 9];
+const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
+console.log(badNewArr);
+
+const newArr = [1, 2, ...arr];
+console.log(newArr);
+
+console.log(...newArr);
+
+const newMenu = [...restaurant.mainMenu, "Gnocci"];
+console.log(newMenu);
+
+// Copy Array
+const mainMenuCopy = [...restaurant.mainMenu];
+console.log(mainMenuCopy);
+
+// Join 2 or more arrays
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+console.log(menu);
+
+// iterables : arrays, strings, maps, sets NOT objects
+const str = "jonas";
+const letters = [...str, " ", "S"];
+console.log(letters);
+console.log(...str);
+
+// Example
+const ingredients = [
+  // prompt("Let's make pasta! Ingredient 1?"),
+  // prompt("Ingredient 2?"),
+  // prompt("Ingeredient 3?"),
+];
+console.log(ingredients);
+
+restaurant.orderPasta(...ingredients);
+
+// Objects
+const newRestaurant = { foundedIn: 1998, ...restaurant, founder: "Guiseppe" };
+console.log(newRestaurant);
+
+const restaurantCopy = { ...restaurant };
+restaurantCopy.name = "Ristorante Roma";
+console.log(restaurantCopy.name);
+console.log(restaurant.name);
+
+
+//////////////////////////
+// Rest Pattern or Parameter
+// 1.) Destructuring
+const [a, b, ...others] = [1, 2, 3, 4, 5];
+console.log(a, b, others);
+
+const [pizza, , risotto, ...otherFood] = [
+  ...restaurant.mainMenu,
+  ...restaurant.starterMenu,
+];
+console.log(pizza, risotto, otherFood);
+
+// Objects
+const { sat, ...weekdays } = restaurant.openingHours;
+console.log(weekdays);
+
+// 2.) Functions
+const add = function (...numbers) {
+  let sum = 0;
+  for (let i = 0; i < numbers.length; i++) {
+    sum += numbers[i];
+  }
+  console.log(sum);
+};
+add(2, 3);
+add(5, 3, 7, 2);
+add(2, 3, 4, 6, 1, 2, 4, 5);
+
+const x = [23, 5, 7];
+add(...x);
+
+restaurant.orderPizza("mushroom", "onion", "olives", "spinach");
+
+
+///////////////////////
+// Short Circuiting
+// OR - ||
+console.log(3 || "Jonas");
+console.log("" || "Jonas");
+console.log(true || 0);
+console.log(undefined || null);
+
+console.log(undefined || 0 || "" || "Hello" || 23 || null);
+
+// restaurant.numGuest = 23;
+const guest1 = restaurant.numGuest ? restaurant.numGuest : 10;
+console.log(guest1);
+const guest2 = restaurant.numGuest || 10;
+
+console.log(guest2);
+
+// AND - &&
+console.log(0 && "Jonas");
+console.log(7 && "Jonas");
+
+console.log("Hello" && 23 && null && "jonas");
+
+if (restaurant.orderPizza) {
+  restaurant.orderPizza("mushroom", "spinach");
+}
+restaurant.orderPizza && restaurant.orderPizza("mushrooms", "spinach");
+
+// Nullish Coalscing operator
+// ??
+const guestCorrect = restaurant.numGuest ?? 10;
+console.log(guestCorrect);
+
+*/
