@@ -1,9 +1,8 @@
 "use strict";
-/*
+
 // Data needed for a later exercise
 const flights =
   "_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30";
-*/
 
 const weekdays = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
 
@@ -62,32 +61,77 @@ const restaurant = {
   },
 };
 
-if (restaurant.openingHours && restaurant.openingHours.mon)
-  console.log(restaurant.openingHours.mon.open);
+//////////////////////////
+// Working with STRINGS
+const airline = "Fly Emirate";
+const plane = "A435";
 
-// WITH Optional chaining
-console.log(restaurant.openingHours.mon?.open);
-console.log(restaurant.openingHours?.mon?.open);
+console.log(plane[1]);
+console.log(plane.length);
 
-// Example
-const days = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
-for (const day of days) {
-  // console.log(day);
-  const open = restaurant.openingHours[day]?.open ?? "closed";
-  console.log(`On ${day}, we open at ${open}`);
-}
+console.log(airline.indexOf("r"));
+console.log(airline.lastIndexOf("e"));
 
-// Optional Chaining on OBJECTS
-console.log(restaurant.order?.(0, 1) ?? "Method does Not Exist");
-console.log(restaurant.orderRisotto?.(0, 1) ?? "Method does Not Exist");
+console.log(airline.slice(4));
+console.log(airline.slice(4, 7));
 
-// Optional Chaining on ARRAYS
-const users = [{ name: "Jonas", email: "hello@jonas.io" }];
+console.log(airline.slice(0, airline.indexOf(" ")));
+console.log(airline.slice(airline.lastIndexOf(" ") + 1));
 
-console.log(users[0]?.name ?? "User array Empty");
+console.log(airline.slice(-2));
+console.log(airline.slice(1, -1));
 
-if (users.length > 0) console.log(users[0].name);
-else console.log("User array Empty");
+const checkMiddleSeat = function (seat) {
+  const x = seat.slice(-1);
+  if (x === "B" || x === "E") console.log("You got the middle seat");
+  else console.log("You got lucky");
+};
+
+checkMiddleSeat("11B");
+checkMiddleSeat("234C");
+checkMiddleSeat("576E");
+
+console.log(new String("Jonas"));
+
+console.log(typeof new String("Jonas").slice(1));
+
+///////
+console.log(airline.toLowerCase());
+console.log(airline.toUpperCase());
+
+//Fix Capitlization
+const passenger = "jOnAS";
+const passengerLower = passenger.toLowerCase();
+const passengerCorrect =
+  passengerLower[0].toUpperCase() + passengerLower.slice(1);
+
+console.log(passengerCorrect);
+
+// Email error
+const email = "hello@jonas.io";
+const loginEmail = "    Hello@jonas.io \n";
+
+const emailChecker = function () {
+  const normalizedEmail = loginEmail.toLowerCase().trim();
+  console.log(normalizedEmail);
+  console.log(email === normalizedEmail);
+};
+
+emailChecker(email, loginEmail);
+
+//Replacing
+const priceGB = "288,97E";
+const priceUS = priceGB.replace("E", "$").replace(",", ".");
+console.log(priceUS);
+
+const annoucement = "use the exit door , exit the door";
+console.log(annoucement.replaceAll("door", "gate"));
+
+//Boolean
+console.log(plane.includes("A4"));
+
+console.log(plane.startsWith("A"));
+console.log(plane.endsWith(5));
 
 /*
 //////////////////////////
@@ -301,6 +345,162 @@ for (const [i, el] of menu.entries()) {
 }
 
 
+///////////////////
+// Optional chaining 
+if (restaurant.openingHours && restaurant.openingHours.mon)
+  console.log(restaurant.openingHours.mon.open);
+
+// WITH Optional chaining
+console.log(restaurant.openingHours.mon?.open);
+console.log(restaurant.openingHours?.mon?.open);
+
+// Example
+const days = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
+for (const day of days) {
+  // console.log(day);
+  const open = restaurant.openingHours[day]?.open ?? "closed";
+  console.log(`On ${day}, we open at ${open}`);
+}
+
+// Optional Chaining on OBJECTS
+console.log(restaurant.order?.(0, 1) ?? "Method does Not Exist");
+console.log(restaurant.orderRisotto?.(0, 1) ?? "Method does Not Exist");
+
+// Optional Chaining on ARRAYS
+const users = [{ name: "Jonas", email: "hello@jonas.io" }];
+
+console.log(users[0]?.name ?? "User array Empty");
+
+if (users.length > 0) console.log(users[0].name);
+else console.log("User array Empty");
 
 
+
+////////////////////
+//Looping Objects
+
+// Property NAMES
+const properties = Object.keys(openingHours);
+console.log(properties);
+
+let openStr = `We are open on ${properties.length} days:`;
+
+for (const day of properties) {
+  openStr += ` ${day}`;
+}
+console.log(openStr);
+
+// Property VALUES
+const values = Object.values(openingHours);
+console.log(values);
+
+// Entire Object
+const entries = Object.entries(openingHours);
+console.log(entries);
+
+// [key,value]
+for (const [key, { open, close }] of entries) {
+  // console.log(key, open, close);
+  console.log(`On ${key} we open at ${open} and close at ${close}`);
+}
+
+
+
+/////////////////////////
+//SETS
+const ordersSet = new Set([
+  "Pasta",
+  "Pizza",
+  "Pizza",
+  "Rissoto",
+  "Pasta",
+  "Pizza",
+]);
+console.log(ordersSet);
+
+console.log(new Set("Jonas"));
+
+console.log(ordersSet.size);
+console.log(ordersSet.has("Pizza"));
+ordersSet.add("Garlic Bread");
+ordersSet.add("Garlic Bread");
+ordersSet.delete("Rissoto");
+// ordersSet.clear();
+console.log(ordersSet);
+
+for (const order of ordersSet) console.log(order);
+
+const staff = ["Waiter", "Chef", "Waiter", "Manager", "Chef", "Waiter"];
+const staffUnique = [...new Set(staff)];
+
+console.log(staffUnique);
+
+//////////////////////////
+// MAPS
+
+const rest = new Map();
+rest.set("name", "Classico Italiano");
+rest.set(1, "Firenze, Italy");
+rest.set(2, "Lisbon, Portugal");
+
+rest
+  .set("categories", ["Italian", "Pizzeria", "Vegetarian", "Organic"])
+  .set("open", 11)
+  .set("close", 23)
+  .set(true, "We are open")
+  .set(false, "We are closed");
+
+console.log(rest);
+console.log(rest.get("name"));
+console.log(rest.get(true));
+console.log(rest.get(1));
+
+const time = 21;
+console.log(rest.get(time > rest.get("open") && time < rest.get("close")));
+
+console.log(rest.has("categories"));
+rest.delete(2);
+// rest.clear();
+
+const arr = [1, 2];
+rest.set(arr, "Test");
+
+console.log(rest);
+
+console.log(rest.size);
+console.log(rest.get(arr));
+
+const question = new Map([
+  ["question", "What is the best programming Language in the world?"],
+  [1, "C"],
+  [2, "Java"],
+  [3, "JavaScript"],
+  ["correct", 3],
+  [true, "Correct"],
+  [false, "Try again"],
+]);
+console.log(question);
+
+// Convert Object to MAP
+console.log(Object.entries(openingHours));
+const hoursMap = new Map(Object.entries(openingHours));
+console.log(hoursMap);
+
+//Quiz app
+
+console.log(question.get("question"));
+for (const [key, value] of question) {
+  if (typeof key === "number") console.log(`Answer ${key} : ${value}`);
+}
+
+const answer = 3; //Number(prompt("Your Answer:"));
+console.log(answer);
+
+console.log(question.get(question.get("correct") === answer));
+
+// Convert Map to Array
+console.log(...question);
+console.log(...question.entries());
+console.log([...question.keys()]);
+console.log([...question.values()]);
 */
