@@ -62,79 +62,6 @@ const restaurant = {
 };
 
 //////////////////////////
-// Working with STRINGS
-const airline = "Fly Emirate";
-const plane = "A435";
-
-console.log(plane[1]);
-console.log(plane.length);
-
-console.log(airline.indexOf("r"));
-console.log(airline.lastIndexOf("e"));
-
-console.log(airline.slice(4));
-console.log(airline.slice(4, 7));
-
-console.log(airline.slice(0, airline.indexOf(" ")));
-console.log(airline.slice(airline.lastIndexOf(" ") + 1));
-
-console.log(airline.slice(-2));
-console.log(airline.slice(1, -1));
-
-const checkMiddleSeat = function (seat) {
-  const x = seat.slice(-1);
-  if (x === "B" || x === "E") console.log("You got the middle seat");
-  else console.log("You got lucky");
-};
-
-checkMiddleSeat("11B");
-checkMiddleSeat("234C");
-checkMiddleSeat("576E");
-
-console.log(new String("Jonas"));
-
-console.log(typeof new String("Jonas").slice(1));
-
-///////
-console.log(airline.toLowerCase());
-console.log(airline.toUpperCase());
-
-//Fix Capitlization
-const passenger = "jOnAS";
-const passengerLower = passenger.toLowerCase();
-const passengerCorrect =
-  passengerLower[0].toUpperCase() + passengerLower.slice(1);
-
-console.log(passengerCorrect);
-
-// Email error
-const email = "hello@jonas.io";
-const loginEmail = "    Hello@jonas.io \n";
-
-const emailChecker = function () {
-  const normalizedEmail = loginEmail.toLowerCase().trim();
-  console.log(normalizedEmail);
-  console.log(email === normalizedEmail);
-};
-
-emailChecker(email, loginEmail);
-
-//Replacing
-const priceGB = "288,97E";
-const priceUS = priceGB.replace("E", "$").replace(",", ".");
-console.log(priceUS);
-
-const annoucement = "use the exit door , exit the door";
-console.log(annoucement.replaceAll("door", "gate"));
-
-//Boolean
-console.log(plane.includes("A4"));
-
-console.log(plane.startsWith("A"));
-console.log(plane.endsWith(5));
-
-/*
-//////////////////////////
 // Array Destructing
 const arr = [2, 3, 4];
 const a = arr[0];
@@ -172,8 +99,6 @@ console.log(i, j, k);
 // Default Values
 const [p = 1, q = 1, r = 1] = [8, 9];
 console.log(p, q, r);
-
-
 
 //////////////////////////
 // Objects Destructing
@@ -265,7 +190,6 @@ restaurantCopy.name = "Ristorante Roma";
 console.log(restaurantCopy.name);
 console.log(restaurant.name);
 
-
 //////////////////////////
 // Rest Pattern or Parameter
 // 1.) Destructuring
@@ -298,7 +222,6 @@ const x = [23, 5, 7];
 add(...x);
 
 restaurant.orderPizza("mushroom", "onion", "olives", "spinach");
-
 
 ///////////////////////
 // Short Circuiting
@@ -333,7 +256,6 @@ restaurant.orderPizza && restaurant.orderPizza("mushrooms", "spinach");
 const guestCorrect = restaurant.numGuest ?? 10;
 console.log(guestCorrect);
 
-
 ////////////////
 // The FOR-OF loop
 const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
@@ -344,9 +266,8 @@ for (const [i, el] of menu.entries()) {
   console.log(` ${i} : ${el}`);
 }
 
-
 ///////////////////
-// Optional chaining 
+// Optional chaining
 if (restaurant.openingHours && restaurant.openingHours.mon)
   console.log(restaurant.openingHours.mon.open);
 
@@ -373,8 +294,6 @@ console.log(users[0]?.name ?? "User array Empty");
 
 if (users.length > 0) console.log(users[0].name);
 else console.log("User array Empty");
-
-
 
 ////////////////////
 //Looping Objects
@@ -403,8 +322,6 @@ for (const [key, { open, close }] of entries) {
   // console.log(key, open, close);
   console.log(`On ${key} we open at ${open} and close at ${close}`);
 }
-
-
 
 /////////////////////////
 //SETS
@@ -503,4 +420,127 @@ console.log(...question);
 console.log(...question.entries());
 console.log([...question.keys()]);
 console.log([...question.values()]);
-*/
+
+//////////////////////////
+// Working with STRINGS
+const airline = "Fly Emirate";
+const plane = "A435";
+
+console.log(plane[1]);
+console.log(plane.length);
+
+console.log(airline.indexOf("r"));
+console.log(airline.lastIndexOf("e"));
+
+console.log(airline.slice(4));
+console.log(airline.slice(4, 7));
+
+console.log(airline.slice(0, airline.indexOf(" ")));
+console.log(airline.slice(airline.lastIndexOf(" ") + 1));
+
+console.log(airline.slice(-2));
+console.log(airline.slice(1, -1));
+
+const checkMiddleSeat = function (seat) {
+  const x = seat.slice(-1);
+  if (x === "B" || x === "E") console.log("You got the middle seat");
+  else console.log("You got lucky");
+};
+
+checkMiddleSeat("11B");
+checkMiddleSeat("234C");
+checkMiddleSeat("576E");
+
+console.log(new String("Jonas"));
+
+console.log(typeof new String("Jonas").slice(1));
+
+///////
+console.log(airline.toLowerCase());
+console.log(airline.toUpperCase());
+
+//Fix Capitlization
+const passenger = "jOnAS";
+const passengerLower = passenger.toLowerCase();
+const passengerCorrect =
+  passengerLower[0].toUpperCase() + passengerLower.slice(1);
+
+console.log(passengerCorrect);
+
+// Email error
+const email = "hello@jonas.io";
+const loginEmail = "    Hello@jonas.io \n";
+
+const emailChecker = function () {
+  const normalizedEmail = loginEmail.toLowerCase().trim();
+  console.log(normalizedEmail);
+  console.log(email === normalizedEmail);
+};
+
+emailChecker(email, loginEmail);
+
+//Replacing
+const priceGB = "288,97E";
+const priceUS = priceGB.replace("E", "$").replace(",", ".");
+console.log(priceUS);
+
+const annoucement = "use the exit door , exit the door";
+console.log(annoucement.replaceAll("door", "gate"));
+
+//Boolean
+console.log(plane.includes("A4"));
+
+console.log(plane.startsWith("A"));
+console.log(plane.endsWith(5));
+
+//Split
+console.log("a+very+nice+string".split("+"));
+const [firstName, lastName] = "Isaac Makinde".split(" ");
+console.log(firstName, lastName);
+
+const newName = ["Mr.", firstName, lastName.toUpperCase()].join(" ");
+console.log(newName);
+
+const capitalizedName = function (name) {
+  const names = name.split(" ");
+  const namesUpper = [];
+  for (const n of names) {
+    // namesUpper.push(n[0].toUpperCase() + n.slice(1));
+    console.log(n);
+    namesUpper.push(n.replace(n[0], n[0].toUpperCase()));
+  }
+
+  console.log(namesUpper.join(" "));
+};
+
+capitalizedName("jessica ann smith davies");
+capitalizedName("jonas schmedtmann");
+
+//Padding
+const message = "Go to gate 23";
+console.log(message.padStart(25, "+").padEnd(30, "+"));
+console.log("jonas".padStart(25, "+").padEnd(30, "+"));
+
+const maskCreditCard = function (number) {
+  const str = number + "";
+  // console.log(str);
+  const last = str.slice(-4);
+
+  return last.padStart(str.length, "*");
+};
+
+console.log(maskCreditCard(22313617684686138));
+console.log(maskCreditCard(2231366138));
+console.log(maskCreditCard(22316138));
+
+// Repeat
+
+const message2 = "Bad weather... All Departures Delayed...";
+console.log(message2.repeat(5));
+
+const planesInLine = function (n) {
+  console.log(`There are ${n} planes in line ${"🛩️".repeat(n)}`);
+};
+planesInLine(5);
+planesInLine(6);
+planesInLine(12);

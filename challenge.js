@@ -153,3 +153,32 @@ for (const [min, event] of gameEvents) {
 //     console.log(`SECOND HALF ${i}:${event}`);
 //   }
 // }
+
+// underscore_case
+//    first_name
+// Some_Variable
+//    calculate_AGE
+// delayed_departure
+
+document.body.append(document.createElement("textarea"));
+document.body.append(document.createElement("button"));
+
+document.querySelector("button").addEventListener("click", function () {
+  const text = document.querySelector("textarea").value;
+  console.log(text);
+  const rows = text.split("\n");
+  console.log(rows);
+
+  for (const [i, row] of rows.entries()) {
+    // console.log(i, row);
+    const [first, second] = row.toLowerCase().trim().split("_");
+    // console.log(row, first, second);
+
+    const outPut = `${first}${second.replace(
+      second[0],
+      second[0].toUpperCase()
+    )}`;
+
+    console.log(`${outPut.padEnd(20)}${"✅".repeat(i + 1)} `);
+  }
+});
